@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const Features = () => {
   const scrollRef = useRef();
@@ -6,41 +7,63 @@ const Features = () => {
   useEffect(() => {
     let locomotiveScroll;
     const initLocomotiveScroll = async () => {
-        const originalConsoleError = console.error;
-        console.error = () => {};
-    
-        try {
-            const LocomotiveScroll = (await import('locomotive-scroll')).default;
-            locomotiveScroll = new LocomotiveScroll({
-              el: scrollRef.current,
-              smooth: true,
-            });
-    
-            if (typeof locomotiveScroll.on === 'function') {
-              locomotiveScroll.on('scroll', (args) => {
-                  document.dispatchEvent(new CustomEvent('locomotive-scroll', { detail: args }));
-              });
-            }
-        } catch (error) {
-            console.error(error);
-        } finally {
-            console.error = originalConsoleError; // Restore original console.error
+      const originalConsoleError = console.error;
+      console.error = () => {};
+
+      try {
+        const LocomotiveScroll = (await import('locomotive-scroll')).default;
+        locomotiveScroll = new LocomotiveScroll({
+          el: scrollRef.current,
+          smooth: true,
+        });
+
+        if (typeof locomotiveScroll.on === 'function') {
+          locomotiveScroll.on('scroll', (args) => {
+            document.dispatchEvent(new CustomEvent('locomotive-scroll', { detail: args }));
+          });
         }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        console.error = originalConsoleError; // Restore original console.error
+      }
     };
-    
+
     initLocomotiveScroll();
-    
+
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy();
     };
   }, []);
 
   return (
-    <div ref={scrollRef} className='h- flex flex-col lg:flex-row items-center justify-between p-6 sm:p-12 lg:p-20'>
+    <div ref={scrollRef} className='h-full flex flex-col lg:flex-row items-center justify-between p-6 sm:p-12 lg:p-20'>
       <div className='relative mb-12 lg:mb-0 w-full lg:w-1/2'>
-        <img src="/assets/Mockup_img_3.png" className='w-full lg:w-3/4 object-cover rounded-3xl mx-auto lg:ml-16' alt="Mockup 3" />
-        <img data-scroll data-scroll-speed="0.3" src="/assets/Mockup_img_4.png" className='w-1/2 sm:w-1/3 lg:w-1/5 object-cover absolute top-32 left-0 rounded-3xl shadow-lg shadow-black/40' alt="Mockup 4" />
-        <img data-scroll data-scroll-speed="0.5" src="/assets/Mockup_img_5.png" className='w-3/4 sm:w-1/2 lg:w-1/4 object-cover absolute top-44 right-0 lg:right-64 rounded-3xl shadow-lg shadow-black/60' alt="Mockup 5" />
+        <Image 
+          src="/assets/Mockup_img_3.png" 
+          width={800} // Replace with actual width of the image
+          height={600} // Replace with actual height of the image
+          className='w-full lg:w-3/4 object-cover rounded-3xl mx-auto lg:ml-16' 
+          alt="Mockup 3" 
+        />
+        <Image 
+          data-scroll 
+          data-scroll-speed="0.3" 
+          src="/assets/Mockup_img_4.png" 
+          width={400} // Replace with actual width of the image
+          height={300} // Replace with actual height of the image
+          className='w-1/2 sm:w-1/3 lg:w-1/5 object-cover absolute top-32 left-0 rounded-3xl shadow-lg shadow-black/40' 
+          alt="Mockup 4" 
+        />
+        <Image 
+          data-scroll 
+          data-scroll-speed="0.5" 
+          src="/assets/Mockup_img_5.png" 
+          width={600} // Replace with actual width of the image
+          height={450} // Replace with actual height of the image
+          className='w-3/4 sm:w-1/2 lg:w-1/4 object-cover absolute top-44 right-0 lg:right-64 rounded-3xl shadow-lg shadow-black/60' 
+          alt="Mockup 5" 
+        />
       </div>
       <div className='flex flex-col gap-5 w-full lg:w-1/2'>
         <h1 className='uppercase montserrat-medium text-[#FED7A5] text-lg lg:text-xl'>Features</h1>

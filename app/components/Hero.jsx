@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const Hero = () => {
   const scrollRef = useRef(null);
@@ -45,19 +46,23 @@ const Hero = () => {
         Elevate your digital presence and captivate your audience like never before.<br /><span className='hidden sm:flex'>Unlock the potential of intuitive design with SleekWave.</span>
       </p>
       {/* Images */}
-      <img
+      <Image
         data-scroll
         data-scroll-speed="0.2"
         src="/assets/Mockup_img.png"
+        width={300} // Replace with actual width of the image
+        height={400} // Replace with actual height of the image
         className='-z-10 absolute h-40 sm:h-80 max-sm:hidden object-cover rounded-3xl right-8 sm:right-32 shadow-md shadow-black/40'
-        alt=""
+        alt="Mockup image"
       />
-      <img
+      <Image
         data-scroll
         data-scroll-speed="0.4"
         src="/assets/Mockup_img2.png"
+        width={300} // Replace with actual width of the image
+        height={400} // Replace with actual height of the image
         className='-z-10 absolute h-40 sm:h-80 max-sm:hidden object-cover rounded-3xl right-4 sm:right-20 bottom-12 shadow-md shadow-black/40'
-        alt=""
+        alt="Mockup image 2"
       />
       <div className='flex flex-col sm:flex-row gap-4 sm:gap-20'>
         <button className='relative border-2 border-gray-400 hover:border-[#C94A93] hover:scale-[1.18] transition-all duration-500 rounded-full group overflow-hidden'>

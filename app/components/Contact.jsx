@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -64,7 +65,7 @@ const Contact = () => {
         >
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-2 sm:mb-4 montserrat-medium text-lg sm:text-xl'>
-              What's your name?
+              What&apos;s your name?
             </span>
             <input
               type='text'
@@ -77,7 +78,7 @@ const Contact = () => {
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-2 sm:mb-4 montserrat-medium text-lg sm:text-xl'>
-              What's your email?
+              What&apos;s your email?
             </span>
             <input
               type='email'
@@ -97,7 +98,7 @@ const Contact = () => {
               name='message'
               value={form.message}
               onChange={handleChange}
-              placeholder="Hello Mubashir. Here's my idea for a unique project"
+              placeholder="Hello Mubashir. Here&apos;s my idea for a unique project"
               className='bg-gray-200 text-black rounded-lg outline-none border-none font-medium p-3 sm:p-4 placeholder:text-gray-400 focus:bg-white'
             />
           </label>
