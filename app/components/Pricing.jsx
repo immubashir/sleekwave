@@ -7,7 +7,7 @@ import { Pagination } from 'swiper/modules';
 const Pricing = () => {
   return (
     <div className='h-screen flex flex-col lg:flex-row items-center justify-between gap-20'>
-      <div className='w-full h-2/3 lg:hidden'>
+      <div className='w-full h-full lg:hidden flex items-center justify-center'>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
